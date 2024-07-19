@@ -1,5 +1,5 @@
-
 const express = require('express');
+require('dotenv').config();
 
 //Crear servidor de express
 const app = express();
@@ -20,6 +20,6 @@ app.get('/', ( req, res ) => {
 
 
 //Escuchar peticiones
-app.listen( 4000, () => {
-    console.log("Escuchando puerto 4000");
+app.listen( process.env.PORT, () => {
+    console.log("Escuchando puerto " + process.env.PORT);
 });
