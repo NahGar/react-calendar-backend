@@ -8,15 +8,11 @@ const app = express();
 app.use( express.static('public'));
 
 
+//Lectura y parseo del body
+app.use( express.json() );
+
 //Rutas
-/*
-app.get('/', ( req, res ) => {
-    
-    res.json({
-        ok: true
-    })
-});
-*/
+app.use('/api/auth', require('./routes/auth'));
 
 
 //Escuchar peticiones
