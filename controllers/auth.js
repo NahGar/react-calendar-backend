@@ -1,9 +1,14 @@
 const { response } = require('express');
+const User = require('../models/User-model');
 
-const createUser = ( req, res = response ) => {
+const createUser = async ( req, res = response ) => {
 
     const { name, email, password } = req.body;
     
+    const user = new User( req.body );
+
+    await user.save();
+
     res.status(201).json({
         ok: true,
         msg: "createUser"
