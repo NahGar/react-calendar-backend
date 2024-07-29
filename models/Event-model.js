@@ -23,4 +23,11 @@ const EventSchema = Schema({
     }
 });
 
+// cuando hace toJSON para que no grabe el campo __v (versión) y _id se muestre como id 
+EventSchema.method('toJSON', function() {
+    const { __v, _id, ...object } = this.toObject();
+    object.id = _id;
+    return object;
+});
+
 module.exports = model('Event', EventSchema);
