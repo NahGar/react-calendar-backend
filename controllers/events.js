@@ -6,7 +6,9 @@ const getEvents = async ( req, res = response ) => {
     try {
         //se pueden incluir condiciones en find()
         //el segundo parámetro de populate es que atributo/s quiero que devuelva (para mas de un valor van separados con espacios)
-        const events = await Event.find({ user: req.uid }).populate('user','name');
+        
+        //const events = await Event.find({ user: req.uid }).populate('user','name'); //eventos del usuario
+        const events = await Event.find({}).populate('user','name'); //eventos de todos
 
         //const events = await User.findOne({ email });
         res.status(201).json({
